@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+        .container { display:flex; min-height:100vh; }
+        .sidebar { width:200px; background:#222; color:#fff; padding:20px; }
+        .sidebar h2 { margin-top:0; }
+        .sidebar button { display:block; width:100%; margin:10px 0; padding:10px; border:none; background:#444; color:#fff; cursor:pointer; border-radius:5px; }
+        .sidebar button.active { background:#28a745; }
+        .content { flex:1; padding:20px; }
+        .section { display:none; margin-top:20px; }
+        .section.active { display:block; }
+        input, select, textarea, button { display:block; width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #ccc; }
+        textarea { resize: vertical; min-height:80px; }
+        .download-btn { background:#007bff; color:#fff; border:none; }
+    </style>
+</head>
+<body>
+<script>
+    if (!localStorage.getItem("user")) window.location.href = "index.html";
+</script>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>🔐 Secure Vault</h2>
+        <button onclick="showSection('text', event)" class="active">Text</button>
+        <button onclick="showSection('email', event)">Email</button>
+        <button onclick="showSection('file', event)">File</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <div class="content">
+        <!-- TEXT -->
+        <div id="text" class="section active">
+            <h2>Text Encryption</h2>
+            <select id="method">
+                <option value="reverse">Reverse</option>
+                <option value="caesar">Caesar</option>
+                <option value="base64">Base64</option>
+                <option value="aes">AES</option>
+            </select>
+            <textarea id="inputText" placeholder="Enter text"></textarea>
+            <div class="actions">
+                <button onclick="encrypt()">Encrypt</button>
+                <button onclick="decrypt()">Decrypt</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Result"></textarea>
+        </div>
+
+        <!-- EMAIL -->
+        <div id="email" class="section">
+            <h2>Email Encryption</h2>
+            <input type="text" id="emailInput" placeholder="Enter email">
+            <select id="emailMethod">
+                <option value="base64">Base64</option>
+                <option value="aes">AES</option>
+            </select>
+            <div class="actions">
+                <button onclick="encryptEmail()">Encrypt</button>
+                <button onclick="decryptEmail()">Decrypt</button>
+            </div>
+            <textarea id="emailOutput" readonly placeholder="Result"></textarea>
+        </div>
+
+        <!-- FILE -->
+        <div id="file" class="section">
+            <h2>File Encryption</h2>
+            <input type="file" id="fileInput">
+            <select id="fileMethod">
+                <option value="base64">Base64</option>
+                <option value="aes">AES</option>
+            </select>
+            <div class="actions">
+                <button onclick="encryptFile()">Encrypt</button>
+                <button onclick="decryptFile()">Decrypt</button>
+            </div>
+            <button class="download-btn" onclick="downloadFile()">⬇ Download File</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
