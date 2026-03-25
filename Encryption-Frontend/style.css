@@ -1,0 +1,160 @@
+/* ===================== HOME PAGE ===================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light gray background for the whole page */
+}
+
+/* Container for sidebar + content */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+    width: 220px;
+    background-color: #1f2937; /* Dark slate gray */
+    color: #ffffff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #374151; /* Slightly lighter than sidebar */
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar button:hover {
+    background-color: #2563eb; /* Blue accent on hover */
+    transform: translateY(-2px);
+}
+
+.sidebar button.active {
+    background-color: #2563eb; /* Active section button */
+}
+
+/* ===================== CONTENT ===================== */
+.content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f9fafb; /* Very light gray */
+    overflow-y: auto;
+}
+
+/* Sections (text/email/file) */
+.section {
+    display: none;
+    margin-top: 20px;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Headings in sections */
+.section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #111827; /* Darker gray */
+}
+
+/* Inputs, textarea, select */
+input, select, textarea, button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db; /* soft gray border */
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Buttons inside sections */
+.section button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.section button:hover {
+    background-color: #1d4ed8; /* Slightly darker blue */
+    transform: translateY(-2px);
+}
+
+/* Download button style */
+.download-btn {
+    background-color: #10b981; /* Green for download */
+    color: #fff;
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+}
+
+/* Actions container */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Readonly output textarea */
+textarea[readonly] {
+    background-color: #e5e7eb; /* Gray background for output */
+    color: #111827;
+}
+
+/* ===================== MESSAGE BOX ===================== */
+#messageBox {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #fff;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
